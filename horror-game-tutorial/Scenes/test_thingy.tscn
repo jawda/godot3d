@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqmg5mwahwjwe"]
+
+[ext_resource type="PackedScene" uid="uid://clr8k1doih4jm" path="res://Scenes/gridmap.tscn" id="1_tcqmi"]
+[ext_resource type="PackedScene" uid="uid://bgytwesr5fv0m" path="res://Scenes/player.tscn" id="2_c6p24"]
+[ext_resource type="PackedScene" uid="uid://besniaol4q3ge" path="res://Scenes/ui.tscn" id="3_qjlo2"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Gridmap" parent="." instance=ExtResource("1_tcqmi")]
+
+[node name="Player" parent="." instance=ExtResource("2_c6p24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06156, 1.95241, 22.0682)
+
+[node name="UI" parent="." instance=ExtResource("3_qjlo2")]
