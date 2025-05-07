@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://4ccsn38ngfhh"]
+[gd_scene load_steps=9 format=3 uid="uid://4ccsn38ngfhh"]
 
 [ext_resource type="Material" uid="uid://laihs2r831jt" path="res://Materials/floor.tres" id="1_1cq4g"]
 [ext_resource type="Material" uid="uid://ctcs16nv5ejyl" path="res://Materials/wall.tres" id="2_ocwms"]
 [ext_resource type="Material" uid="uid://b6s06f5wa3mn4" path="res://Materials/ceiling.tres" id="3_pbphk"]
 [ext_resource type="PackedScene" uid="uid://fwcp460e0px6" path="res://Scenes/light.tscn" id="4_5royd"]
+[ext_resource type="PackedScene" uid="uid://cs06s25nyn763" path="res://Scenes/furniture/table.tscn" id="5_pbphk"]
+[ext_resource type="PackedScene" uid="uid://hfj6fq82jj5r" path="res://Scenes/items/flashlight.tscn" id="6_5royd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_51e2h"]
 
@@ -179,6 +181,7 @@ mesh = SubResource("BoxMesh_tumq0")
 
 [node name="ceiling" type="StaticBody3D" parent="."]
 transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 60, 0, 6.32216, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling"]
 shape = SubResource("BoxShape3D_51e2h")
@@ -192,3 +195,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 6.1242, -21.6853)
 
 [node name="light2" parent="." instance=ExtResource("4_5royd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 6.1242, -11.7803)
+
+[node name="Table" parent="." instance=ExtResource("5_pbphk")]
+transform = Transform3D(0.0236645, 0, 0.99972, 0, 1, 0, -0.99972, 0, 0.0236645, -4.96707, 0.433718, -21.7445)
+
+[node name="Flashlight" parent="." instance=ExtResource("6_5royd")]
+transform = Transform3D(0.724274, 0, 0, 0, 0.396104, 0, 0, 0, 0.410828, -4.44779, 1.34662, -22.1561)
