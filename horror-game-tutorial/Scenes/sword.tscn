@@ -36,7 +36,7 @@ material_override = ExtResource("2_kb2vl")
 mesh = SubResource("BoxMesh_goa0h")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(-0.00945266, 0.660458, 0, -0.20673, -0.0301992, 0, 0, 0, 0.123261, 0.000805616, -1.69504, 0)
+transform = Transform3D(-0.00829769, 0.656732, 0, -0.181471, -0.0300288, 0, 0, 0, 0.15133, 0.000805616, -1.69504, 0)
 material_override = ExtResource("3_6j4cb")
 mesh = SubResource("BoxMesh_goa0h")
 
