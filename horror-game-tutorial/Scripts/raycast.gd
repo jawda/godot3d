@@ -3,15 +3,16 @@ extends RayCast3D
 var int_text
 
 func _ready() -> void:
-	int_text = get_node("/root/" + get_tree().current_scene.name + "/UI/interact_text")
+	var node = get_node("/root/" + get_tree().current_scene.name + "/UI/interact_text")
+	if node != null:
+		int_text = node
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 		
 	if is_colliding():
-		print("colliding")
 		var hit = get_collider()
 		if hit.has_method("interact"):
 			int_text.visible = true

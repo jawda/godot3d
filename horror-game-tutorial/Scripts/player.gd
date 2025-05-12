@@ -19,9 +19,10 @@ func _process(delta: float) -> void:
 		if sprint_slider.value <= sprint_slider.min_value:
 			SPEED = ORIGINAL_SPEED
 	if SPEED != SPRINT_SPEED:
-		if sprint_slider.value < sprint_slider.max_value: 
+		
+		if sprint_slider != null and sprint_slider.value < sprint_slider.max_value: 
 			sprint_slider.value = sprint_slider.value + sprint_refresh_amount * delta
-		if sprint_slider.value == sprint_slider.max_value:
+		if sprint_slider != null and sprint_slider.value == sprint_slider.max_value:
 			sprint_slider.visible = false
 				
 func _physics_process(delta: float) -> void:

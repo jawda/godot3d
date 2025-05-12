@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ccsn38ngfhh"]
+[gd_scene load_steps=10 format=3 uid="uid://4ccsn38ngfhh"]
 
 [ext_resource type="Material" uid="uid://laihs2r831jt" path="res://Materials/floor.tres" id="1_1cq4g"]
+[ext_resource type="AudioStream" uid="uid://c36aentfndk5d" path="res://Audio/ambience.mp3" id="1_5royd"]
 [ext_resource type="Material" uid="uid://ctcs16nv5ejyl" path="res://Materials/wall.tres" id="2_ocwms"]
 [ext_resource type="Material" uid="uid://b6s06f5wa3mn4" path="res://Materials/ceiling.tres" id="3_pbphk"]
 [ext_resource type="PackedScene" uid="uid://fwcp460e0px6" path="res://Scenes/light.tscn" id="4_5royd"]
@@ -12,6 +13,35 @@
 [sub_resource type="BoxMesh" id="BoxMesh_tumq0"]
 
 [node name="level-01" type="Node3D"]
+
+[node name="ambiance_sounds" type="Node3D" parent="."]
+
+[node name="ambiance" type="AudioStreamPlayer3D" parent="ambiance_sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3362, 0, 48.6713)
+stream = ExtResource("1_5royd")
+autoplay = true
+max_distance = 50.0
+
+[node name="ambiance2" type="AudioStreamPlayer3D" parent="ambiance_sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.349, 0, 48.6713)
+stream = ExtResource("1_5royd")
+pitch_scale = 0.81
+autoplay = true
+max_distance = 50.0
+
+[node name="ambiance3" type="AudioStreamPlayer3D" parent="ambiance_sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.362, 0, 6.49821)
+stream = ExtResource("1_5royd")
+pitch_scale = 0.58
+autoplay = true
+max_distance = 50.0
+
+[node name="ambiance4" type="AudioStreamPlayer3D" parent="ambiance_sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2197, 0, -24.7134)
+stream = ExtResource("1_5royd")
+pitch_scale = 0.4
+autoplay = true
+max_distance = 50.0
 
 [node name="floor" type="StaticBody3D" parent="."]
 transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 60, 0, 0, 0)
@@ -59,6 +89,7 @@ mesh = SubResource("BoxMesh_tumq0")
 transform = Transform3D(11.2789, 0, 0.11484, 0, 5, 0, -0.129535, 0, 9.99934, 6.88702, 2.76613, 16.4987)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 9.31323e-10, 0, 1, 0, 0.280345, 0)
 shape = SubResource("BoxShape3D_51e2h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/wall10"]
@@ -96,12 +127,13 @@ material_override = ExtResource("2_ocwms")
 mesh = SubResource("BoxMesh_tumq0")
 
 [node name="wall4" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(-0.121198, 0, 1.07472, 0, 5, 0, -11.3648, 0, -0.0114612, -6.52402, 2.99179, -23.9633)
+transform = Transform3D(-0.121198, 0, 1.07472, 0, 5, 0, -11.3648, 0, -0.0114612, -6.52402, 1.73926, -23.9633)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall4"]
 shape = SubResource("BoxShape3D_51e2h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/wall4"]
+transform = Transform3D(1, 0, 1.16415e-10, 0, 1, 0, 0, 0, 1, 0, 0.247765, 0)
 material_override = ExtResource("2_ocwms")
 mesh = SubResource("BoxMesh_tumq0")
 
@@ -122,7 +154,7 @@ transform = Transform3D(-38.5066, 0, -0.000337333, 0, 5, 0, 0.0120942, 0, -1.074
 shape = SubResource("BoxShape3D_51e2h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/outer-wall"]
-transform = Transform3D(1, 0, 3.63798e-12, 0, 1, 0, 2.32831e-10, 0, 1, -0.00952988, 0, -2.86102e-05)
+transform = Transform3D(1, 0, 3.63798e-12, 0, 1, 0, 0, 0, 1, -0.00952988, 0.220576, -2.86102e-05)
 material_override = ExtResource("2_ocwms")
 mesh = SubResource("BoxMesh_tumq0")
 
@@ -181,7 +213,6 @@ mesh = SubResource("BoxMesh_tumq0")
 
 [node name="ceiling" type="StaticBody3D" parent="."]
 transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 60, 0, 6.32216, 0)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling"]
 shape = SubResource("BoxShape3D_51e2h")
@@ -191,10 +222,19 @@ material_override = ExtResource("3_pbphk")
 mesh = SubResource("BoxMesh_tumq0")
 
 [node name="light" parent="." instance=ExtResource("4_5royd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 6.1242, -21.6853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 5.93637, -21.6853)
 
 [node name="light2" parent="." instance=ExtResource("4_5royd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 6.1242, -11.7803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 6.16574, -11.7803)
+
+[node name="light3" parent="." instance=ExtResource("4_5royd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 5.50268, 11.7527)
+
+[node name="light4" parent="." instance=ExtResource("4_5royd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3829, 5.06935, 23.3132)
+
+[node name="light5" parent="." instance=ExtResource("4_5royd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3829, 6.19825, -23.3764)
 
 [node name="Table" parent="." instance=ExtResource("5_pbphk")]
 transform = Transform3D(0.0236645, 0, 0.99972, 0, 1, 0, -0.99972, 0, 0.0236645, -4.96707, 0.433718, -21.7445)
