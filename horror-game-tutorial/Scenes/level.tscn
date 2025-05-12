@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4i7nxiqigo52"]
+[gd_scene load_steps=11 format=3 uid="uid://c4i7nxiqigo52"]
 
 [ext_resource type="PackedScene" uid="uid://besniaol4q3ge" path="res://Scenes/ui.tscn" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://bgytwesr5fv0m" path="res://Scenes/player.tscn" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://4ccsn38ngfhh" path="res://Levels/level_01.tscn" id="2_6phgx"]
+[ext_resource type="Script" uid="uid://g37geyuuwh12" path="res://Scripts/beggining_cutscene.gd" id="4_81xng"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_51e2h"]
 sky_top_color = Color(0.312931, 0.448458, 0.674901, 1)
@@ -18,6 +19,68 @@ sky = SubResource("Sky_tumq0")
 glow_enabled = true
 adjustment_enabled = true
 adjustment_saturation = 2.43
+
+[sub_resource type="Animation" id="Animation_wqkje"]
+resource_name = "beginning"
+length = 8.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cutscene_cam:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.99721, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.66404, 0.264), Vector3(0, 0.568365, 0.264), Vector3(0, 0.568365, 0.264)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cutscene_cam:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4.49789, 7.99721),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.93727, 0), Vector3(0.233874, 3.93572, 0), Vector3(0.233874, 1.84132, 0), Vector3(0.233874, 2.2218, 0), Vector3(0.666716, 3.33183, 0), Vector3(0.233874, 3.16777, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0f350"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cutscene_cam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.50907, 0.264)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cutscene_cam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.93727, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8c0lf"]
+_data = {
+&"RESET": SubResource("Animation_0f350"),
+&"beginning": SubResource("Animation_wqkje")
+}
 
 [node name="level" type="Node3D"]
 
@@ -35,3 +98,17 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_tumq0")]
 transform = Transform3D(-0.707033, 0, 0.707181, 0, 1, 0, -0.707181, 0, -0.707033, -1.28059, 1.59341, -26.4562)
+
+[node name="beggining_cutscene" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.554832, 1.40992, -25.9096)
+script = ExtResource("4_81xng")
+
+[node name="cutscene_cam" type="Camera3D" parent="beggining_cutscene"]
+transform = Transform3D(-0.979198, 0, 0.202907, 0, 1, 0, -0.202907, 0, -0.979198, 0, -1.50907, 0.264)
+fov = 73.4865
+far = 20.0
+
+[node name="cutscene_anim_player" type="AnimationPlayer" parent="beggining_cutscene"]
+libraries = {
+&"": SubResource("AnimationLibrary_8c0lf")
+}

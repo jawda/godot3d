@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://pvbhy4dc11t1"]
+
+[ext_resource type="Material" uid="uid://bd06no7iwjnbf" path="res://Materials/flashlight.tres" id="1_d6wag"]
+[ext_resource type="Material" uid="uid://67cyqgdv333w" path="res://Materials/table.tres" id="2_kb2vl"]
+[ext_resource type="Material" uid="uid://b6s06f5wa3mn4" path="res://Materials/ceiling.tres" id="3_6j4cb"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_50033"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_goa0h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6wdhb"]
+height = 2.33213
+
+[node name="sword" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.207457, 0, 0, 0, 0.689445, 0, 0, 0, 0.161809, 0, 0, 0)
+material_override = ExtResource("1_d6wag")
+mesh = SubResource("PrismMesh_50033")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.206559, 0, 0, 0, 0.689445, 0, 0, 0, 0.14566, 0.000805616, -0.670891, 0)
+material_override = ExtResource("1_d6wag")
+mesh = SubResource("BoxMesh_goa0h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.206559, 0, 0, 0, 0.689445, 0, 0, 0, 0.14566, 0.000805616, -1.34374, 0)
+material_override = ExtResource("1_d6wag")
+mesh = SubResource("BoxMesh_goa0h")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.206559, 0, 0, 0, 0.689445, 0, 0, 0, 0.14566, 0.000805616, -1.98709, 0)
+material_override = ExtResource("2_kb2vl")
+mesh = SubResource("BoxMesh_goa0h")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-0.00945266, 0.660458, 0, -0.20673, -0.0301992, 0, 0, 0, 0.123261, 0.000805616, -1.69504, 0)
+material_override = ExtResource("3_6j4cb")
+mesh = SubResource("BoxMesh_goa0h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.688171, 0, 0, 0, 1.16583, 0, 0, 0, 0.426475, 0, -0.976611, 0)
+shape = SubResource("CapsuleShape3D_6wdhb")

@@ -2,6 +2,7 @@ extends Node3D
 
 
 var sens = 0.005 #sensitivity
+var movable = false
 
 func _ready() -> void:
 	#lock cursor to middle of screen and hides it
@@ -10,7 +11,7 @@ func _ready() -> void:
 	
 func _input(event: InputEvent) -> void:
 	
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and movable == true:
 		#get player object rotate based on mouse movement
 		get_parent().rotate_y(-event.relative.x * sens)
 		#rotate the head up and down

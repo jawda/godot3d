@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://4ccsn38ngfhh"]
+[gd_scene load_steps=11 format=3 uid="uid://4ccsn38ngfhh"]
 
 [ext_resource type="Material" uid="uid://laihs2r831jt" path="res://Materials/floor.tres" id="1_1cq4g"]
 [ext_resource type="AudioStream" uid="uid://c36aentfndk5d" path="res://Audio/ambience.mp3" id="1_5royd"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://fwcp460e0px6" path="res://Scenes/light.tscn" id="4_5royd"]
 [ext_resource type="PackedScene" uid="uid://cs06s25nyn763" path="res://Scenes/furniture/table.tscn" id="5_pbphk"]
 [ext_resource type="PackedScene" uid="uid://hfj6fq82jj5r" path="res://Scenes/items/flashlight.tscn" id="6_5royd"]
+[ext_resource type="PackedScene" uid="uid://c3vp8elqr0l05" path="res://Scenes/door.tscn" id="8_ale55"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_51e2h"]
 
@@ -148,7 +149,7 @@ transform = Transform3D(1, 0, 3.63798e-12, 0, 1, 0, 2.32831e-10, 0, 1, -0.009529
 mesh = SubResource("BoxMesh_tumq0")
 
 [node name="outer-wall" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(-38.5066, 0, -0.000337333, 0, 5, 0, 0.0120942, 0, -1.074, -0.241078, 2.99179, 29.4158)
+transform = Transform3D(-38.5066, 0, -0.000337333, 0, 5, 0, 0.0120942, 0, -1.074, -0.241078, 1.62203, 29.4158)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/outer-wall"]
 shape = SubResource("BoxShape3D_51e2h")
@@ -192,7 +193,7 @@ material_override = ExtResource("2_ocwms")
 mesh = SubResource("BoxMesh_tumq0")
 
 [node name="wall6" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(11.2789, 0, 0.11484, 0, 5, 0, -0.129535, 0, 9.99934, -9.93196, 2.76613, -14.8064)
+transform = Transform3D(11.2789, 0, 0.11484, 0, 5, 0, -0.129535, 0, 9.99934, -8.5473, 2.76613, -14.8064)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall6"]
 shape = SubResource("BoxShape3D_51e2h")
@@ -202,7 +203,7 @@ material_override = ExtResource("2_ocwms")
 mesh = SubResource("BoxMesh_tumq0")
 
 [node name="wall2" type="StaticBody3D" parent="Walls"]
-transform = Transform3D(11.2791, 0, -0.0925011, 0, 5, 0, 0.104338, 0, 9.99957, 7.62219, 2.76613, -14.8064)
+transform = Transform3D(11.2791, 0, -0.0925011, 0, 5, 0, 0.104338, 0, 9.99957, 5.82126, 2.76613, -14.8064)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/wall2"]
 shape = SubResource("BoxShape3D_51e2h")
@@ -212,7 +213,7 @@ material_override = ExtResource("2_ocwms")
 mesh = SubResource("BoxMesh_tumq0")
 
 [node name="ceiling" type="StaticBody3D" parent="."]
-transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 60, 0, 6.32216, 0)
+transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 60, 0, 5.59664, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ceiling"]
 shape = SubResource("BoxShape3D_51e2h")
@@ -221,23 +222,28 @@ shape = SubResource("BoxShape3D_51e2h")
 material_override = ExtResource("3_pbphk")
 mesh = SubResource("BoxMesh_tumq0")
 
-[node name="light" parent="." instance=ExtResource("4_5royd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 5.93637, -21.6853)
+[node name="Lights" type="Node" parent="."]
 
-[node name="light2" parent="." instance=ExtResource("4_5royd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 6.16574, -11.7803)
+[node name="light" parent="Lights" instance=ExtResource("4_5royd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 5.38021, -21.6853)
 
-[node name="light3" parent="." instance=ExtResource("4_5royd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 5.50268, 11.7527)
+[node name="light2" parent="Lights" instance=ExtResource("4_5royd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 5.34808, -11.7803)
 
-[node name="light4" parent="." instance=ExtResource("4_5royd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3829, 5.06935, 23.3132)
+[node name="light3" parent="Lights" instance=ExtResource("4_5royd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09084, 5.22799, 11.7527)
 
-[node name="light5" parent="." instance=ExtResource("4_5royd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3829, 6.19825, -23.3764)
+[node name="light4" parent="Lights" instance=ExtResource("4_5royd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3829, 5.28645, 23.3132)
+
+[node name="light5" parent="Lights" instance=ExtResource("4_5royd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3829, 5.26299, -23.3764)
 
 [node name="Table" parent="." instance=ExtResource("5_pbphk")]
 transform = Transform3D(0.0236645, 0, 0.99972, 0, 1, 0, -0.99972, 0, 0.0236645, -4.96707, 0.433718, -21.7445)
 
 [node name="Flashlight" parent="." instance=ExtResource("6_5royd")]
 transform = Transform3D(0.724274, 0, 0, 0, 0.396104, 0, 0, 0, 0.410828, -4.44779, 1.34662, -22.1561)
+
+[node name="Door" parent="." instance=ExtResource("8_ale55")]
+transform = Transform3D(-0.999429, 0, -0.0270265, 0, 1.67302, 0, 0.0337831, 0, -0.799543, -1.13076, 3.04958, -19.0384)
